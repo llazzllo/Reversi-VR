@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://0co717v3b4cw"]
+
+[ext_resource type="Script" path="res://Reversi/player.gd" id="1_l7gx1"]
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="1_tknky"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_42mam"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_s42u5"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="4_h05xp"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="5_oitbr"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="6_gclak"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="7_vg3ja"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wqkkl"]
+
+[node name="Player" type="XROrigin3D"]
+script = ExtResource("1_l7gx1")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+
+[node name="LeftHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0)
+tracker = &"left_hand"
+pose = &"aim"
+
+[node name="LeftHand" parent="LeftHand" instance=ExtResource("1_tknky")]
+
+[node name="MovementDirect" parent="LeftHand" instance=ExtResource("2_42mam")]
+strafe = true
+
+[node name="FunctionPickup" parent="LeftHand" instance=ExtResource("3_s42u5")]
+
+[node name="FunctionPointer" parent="LeftHand" instance=ExtResource("4_h05xp")]
+show_target = true
+collision_mask = 5242881
+collide_with_areas = true
+
+[node name="RightHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
+tracker = &"right_hand"
+pose = &"aim"
+
+[node name="RightHand" parent="RightHand" instance=ExtResource("5_oitbr")]
+
+[node name="MovementTurn" parent="RightHand" instance=ExtResource("6_gclak")]
+turn_mode = 2
+
+[node name="FunctionPickup" parent="RightHand" instance=ExtResource("3_s42u5")]
+
+[node name="PlayerBody" parent="." instance=ExtResource("7_vg3ja")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_wqkkl")
+
+[connection signal="button_pressed" from="LeftHand" to="." method="_on_left_hand_button_pressed"]
+[connection signal="button_released" from="LeftHand" to="." method="_on_left_hand_button_released"]

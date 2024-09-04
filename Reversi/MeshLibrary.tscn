@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://ca7u1pcyhbvae"]
+
+[ext_resource type="Script" path="res://Reversi/space.gd" id="1_cn0fy"]
+[ext_resource type="PackedScene" uid="uid://bbrev2xo7te8l" path="res://Reversi/White.glb" id="2_qr4ot"]
+[ext_resource type="PackedScene" uid="uid://bd8pwee3dh6ek" path="res://Reversi/Black.glb" id="3_t3uxi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yndap"]
+albedo_color = Color(0, 0.517647, 0.0235294, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p5egp"]
+material = SubResource("StandardMaterial3D_yndap")
+size = Vector3(0.75, 0.01, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2wlve"]
+size = Vector3(0.75, 0.01, 0.75)
+
+[node name="MeshLibrary" type="Node3D"]
+
+[node name="Space" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_p5egp")
+script = ExtResource("1_cn0fy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Space"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Space/StaticBody3D"]
+shape = SubResource("BoxShape3D_2wlve")
+
+[node name="White" parent="." instance=ExtResource("2_qr4ot")]
+
+[node name="Black" parent="." instance=ExtResource("3_t3uxi")]

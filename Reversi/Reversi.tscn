@@ -1,0 +1,91 @@
+[gd_scene load_steps=15 format=3 uid="uid://ccw8k8w7cjqtf"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_i3574"]
+[ext_resource type="Texture2D" uid="uid://drc05oio7cmsd" path="res://Reversi/rect1.png" id="3_1mw5g"]
+[ext_resource type="PackedScene" uid="uid://0co717v3b4cw" path="res://Reversi/Player.tscn" id="4_nusaj"]
+[ext_resource type="MeshLibrary" uid="uid://y3oiagumcfc8" path="res://Reversi/MeshLibrary.tres" id="4_wyow6"]
+[ext_resource type="PackedScene" uid="uid://7ijoi2soi4re" path="res://ccCube.tscn" id="5_3q871"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3y3gi"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_481ev"]
+sky_material = SubResource("ProceduralSkyMaterial_3y3gi")
+
+[sub_resource type="Environment" id="Environment_uxnh7"]
+background_mode = 2
+sky = SubResource("Sky_481ev")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7w1yy"]
+size = Vector3(32, 1, 32)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gic23"]
+size = Vector3(32, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j3e6f"]
+size = Vector3(1, 3, 32)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8dbm"]
+albedo_texture = ExtResource("3_1mw5g")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h3u2y"]
+size = Vector2(8, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b2gvg"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_i3574")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uxnh7")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_7w1yy")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 16.5)
+shape = SubResource("BoxShape3D_gic23")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -16.5)
+shape = SubResource("BoxShape3D_gic23")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 1.5, 0)
+shape = SubResource("BoxShape3D_j3e6f")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 1.5, 0)
+shape = SubResource("BoxShape3D_j3e6f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
+material_override = SubResource("StandardMaterial3D_y8dbm")
+mesh = SubResource("PlaneMesh_h3u2y")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_b2gvg")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("4_wyow6")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65532, 3, 0, 3, 65532, 0, 65532, 65532, 0, 65532, 65533, 0, 65532, 65534, 0, 65532, 65535, 0, 65532, 0, 0, 65532, 1, 0, 65532, 2, 0, 65533, 65532, 0, 65533, 65533, 0, 65533, 65534, 0, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65533, 2, 0, 65533, 3, 0, 65534, 65532, 0, 65534, 65533, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65534, 3, 0, 65535, 65532, 0, 65535, 65533, 0, 65535, 65534, 0, 65535, 65535, 2, 65535, 0, 1, 65535, 1, 0, 65535, 2, 0, 65535, 3, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 1, 0, 0, 2, 0, 1, 0, 0, 2, 0, 0, 3, 0, 1, 65532, 0, 1, 65533, 0, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 2, 65532, 0, 2, 65533, 0, 2, 65534, 0, 2, 65535, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0)
+}
+
+[node name="WalkMode" parent="." node_paths=PackedStringArray("gridmap") instance=ExtResource("4_nusaj")]
+gridmap = NodePath("../GridMap")
+
+[node name="RigidBody3D" parent="." instance=ExtResource("5_3q871")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.07332, 1.57538, 0)
+freeze = true

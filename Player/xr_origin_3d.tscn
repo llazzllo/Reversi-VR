@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cl7kv3hbw1msj"]
+
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="1_rd7ev"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="2_3rlt5"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_nyufn"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="4_erko0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wqkkl"]
+
+[node name="Direct Movement" type="XROrigin3D"]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+
+[node name="LeftHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0)
+tracker = &"left_hand"
+pose = &"aim"
+
+[node name="LeftHand" parent="LeftHand" instance=ExtResource("1_rd7ev")]
+
+[node name="MovementDirect" parent="LeftHand" instance=ExtResource("2_nyufn")]
+strafe = true
+
+[node name="RightHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
+tracker = &"right_hand"
+pose = &"aim"
+
+[node name="RightHand" parent="RightHand" instance=ExtResource("2_3rlt5")]
+
+[node name="PlayerBody" parent="." instance=ExtResource("4_erko0")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_wqkkl")

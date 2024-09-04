@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmfgb726u5xqk"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_sitxp"]
+[ext_resource type="PackedScene" uid="uid://dafcdp4f3lsg6" path="res://Editor/Walk_Mode.tscn" id="3_3kt6t"]
+[ext_resource type="PackedScene" uid="uid://bd1lie7ceqqed" path="res://Parity/Quill_Grids.tscn" id="3_r7p5q"]
+[ext_resource type="PackedScene" uid="uid://bo1shoq2ca3c7" path="res://Parity/quill_meter.tscn" id="4_8pbim"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3y3gi"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_481ev"]
+sky_material = SubResource("ProceduralSkyMaterial_3y3gi")
+
+[sub_resource type="Environment" id="Environment_uxnh7"]
+background_mode = 2
+sky = SubResource("Sky_481ev")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_sitxp")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uxnh7")
+
+[node name="QuillGrids" parent="." instance=ExtResource("3_r7p5q")]
+
+[node name="WalkMode" parent="." instance=ExtResource("3_3kt6t")]
+
+[node name="Quill_Meter" parent="." instance=ExtResource("4_8pbim")]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, -3.48866)
