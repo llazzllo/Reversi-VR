@@ -27,4 +27,14 @@ shape = SubResource("BoxShape3D_2wlve")
 
 [node name="White" parent="." instance=ExtResource("2_qr4ot")]
 
+[node name="StaticBody3D" type="StaticBody3D" parent="White"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="White/StaticBody3D"]
+shape = SubResource("BoxShape3D_2wlve")
+
 [node name="Black" parent="." instance=ExtResource("3_t3uxi")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Black"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Black/StaticBody3D"]
+shape = SubResource("BoxShape3D_2wlve")

@@ -44,13 +44,13 @@ size = Vector2(8, 8)
 resource_local_to_scene = true
 size = Vector2(0.3, 0.2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5eodx"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rnthv"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uoa06"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5nr2y"]
 transparency = 1
 cull_mode = 2
-albedo_texture = SubResource("ViewportTexture_5eodx")
+albedo_texture = SubResource("ViewportTexture_rnthv")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ncq34"]
@@ -101,8 +101,9 @@ mesh_library = ExtResource("4_wyow6")
 cell_size = Vector3(1, 1, 1)
 cell_center_y = false
 data = {
-"cells": PackedInt32Array(65532, 3, 0, 3, 65532, 0, 65532, 65532, 0, 65532, 65533, 0, 65532, 65534, 0, 65532, 65535, 0, 65532, 0, 0, 65532, 1, 0, 65532, 2, 0, 65533, 65532, 0, 65533, 65533, 0, 65533, 65534, 0, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65533, 2, 0, 65533, 3, 0, 65534, 65532, 0, 65534, 65533, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65534, 3, 0, 65535, 65532, 0, 65535, 65533, 0, 65535, 65534, 0, 65535, 65535, 2, 65535, 0, 1, 65535, 1, 0, 65535, 2, 0, 65535, 3, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 1, 0, 0, 2, 0, 1, 0, 0, 2, 0, 0, 3, 0, 1, 65532, 0, 1, 65533, 0, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 2, 65532, 0, 2, 65533, 0, 2, 65534, 0, 2, 65535, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0)
+"cells": PackedInt32Array(65532, 3, 0, 3, 65532, 0, 65532, 65532, 0, 65532, 65533, 0, 65532, 65534, 0, 65532, 65535, 0, 65532, 0, 0, 65532, 1, 0, 65532, 2, 0, 65533, 65532, 0, 65533, 65533, 0, 65533, 65534, 0, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65533, 2, 0, 65533, 3, 0, 65534, 65532, 0, 65534, 65533, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65534, 3, 0, 65535, 65532, 0, 65535, 65533, 0, 65535, 65534, 0, 65535, 65535, 2, 65535, 0, 1, 65535, 1, 0, 65535, 2, 0, 65535, 3, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 2, 0, 1, 0, 0, 2, 0, 0, 3, 0, 1, 65532, 0, 1, 65533, 0, 1, 65534, 0, 1, 65535, 1, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 2, 65532, 0, 2, 65533, 0, 2, 65534, 0, 2, 65535, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0)
 }
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="WalkMode" parent="." node_paths=PackedStringArray("gridmap") instance=ExtResource("4_nusaj")]
 gridmap = NodePath("../GridMap")
@@ -138,7 +139,7 @@ bus = &"MicrophoneBus"
 
 [node name="Screen" parent="Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_wuba6")
-surface_material_override/0 = SubResource("StandardMaterial3D_uoa06")
+surface_material_override/0 = SubResource("StandardMaterial3D_5nr2y")
 
 [node name="StaticBody3D" parent="Viewport2Din3D" index="2"]
 screen_size = Vector2(0.3, 0.2)
