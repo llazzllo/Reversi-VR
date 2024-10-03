@@ -10,3 +10,8 @@ func _ready() -> void:
 		var vp: Viewport = get_viewport()
 		vp.use_xr = true
 	
+
+func _input(event):
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_P:
+			find_child("NetworkGateway").simple_webrtc_connect("mushroom")

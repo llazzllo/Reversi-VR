@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ccw8k8w7cjqtf"]
+[gd_scene load_steps=23 format=3 uid="uid://ccw8k8w7cjqtf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_i3574"]
 [ext_resource type="Texture2D" uid="uid://drc05oio7cmsd" path="res://Reversi/rect1.png" id="3_1mw5g"]
@@ -6,6 +6,9 @@
 [ext_resource type="MeshLibrary" uid="uid://y3oiagumcfc8" path="res://Reversi/MeshLibrary.tres" id="4_wyow6"]
 [ext_resource type="PackedScene" uid="uid://7ijoi2soi4re" path="res://ccCube.tscn" id="5_3q871"]
 [ext_resource type="PackedScene" uid="uid://ctltchlf2j2r4" path="res://addons/xr-simulator/XRSimulator.tscn" id="5_yqfqf"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="7_sr21v"]
+[ext_resource type="PackedScene" uid="uid://cfmoahalri06d" path="res://addons/player-networking/NetworkGateway.tscn" id="8_pbqf7"]
+[ext_resource type="PackedScene" uid="uid://bgw2tanm4il3j" path="res://avatars/tunnelvrplayeravatar/VRPlayerAvatar.tscn" id="9_xvucv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3y3gi"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -36,6 +39,23 @@ albedo_texture = ExtResource("3_1mw5g")
 size = Vector2(8, 8)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b2gvg"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_wuba6"]
+resource_local_to_scene = true
+size = Vector2(0.3, 0.2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_e0vkd"]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dy7m"]
+transparency = 1
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_e0vkd")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ncq34"]
+resource_local_to_scene = true
+size = Vector3(0.3, 0.2, 0.02)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_i3574")
@@ -81,14 +101,61 @@ mesh_library = ExtResource("4_wyow6")
 cell_size = Vector3(1, 1, 1)
 cell_center_y = false
 data = {
-"cells": PackedInt32Array(65532, 3, 0, 3, 65532, 0, 65532, 65532, 0, 65532, 65533, 0, 65532, 65534, 0, 65532, 65535, 0, 65532, 0, 0, 65532, 1, 0, 65532, 2, 0, 65533, 65532, 0, 65533, 65533, 0, 65533, 65534, 0, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65533, 2, 0, 65533, 3, 0, 65534, 65532, 0, 65534, 65533, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65534, 3, 0, 65535, 65532, 0, 65535, 65533, 0, 65535, 65534, 0, 65535, 65535, 2, 65535, 0, 1, 65535, 1, 0, 65535, 2, 0, 65535, 3, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 1, 0, 0, 2, 0, 1, 0, 0, 2, 0, 0, 3, 0, 1, 65532, 0, 1, 65533, 0, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 2, 65532, 0, 2, 65533, 0, 2, 65534, 0, 2, 65535, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0)
+"cells": PackedInt32Array(65532, 3, 0, 3, 65532, 0, 65532, 65532, 0, 65532, 65533, 0, 65532, 65534, 0, 65532, 65535, 0, 65532, 0, 0, 65532, 1, 0, 65532, 2, 0, 65533, 65532, 0, 65533, 65533, 0, 65533, 65534, 0, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65533, 2, 0, 65533, 3, 0, 65534, 65532, 0, 65534, 65533, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65534, 3, 0, 65535, 65532, 0, 65535, 65533, 0, 65535, 65534, 0, 65535, 65535, 2, 65535, 0, 1, 65535, 1, 0, 65535, 2, 0, 65535, 3, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 2, 0, 1, 0, 0, 2, 0, 0, 3, 0, 1, 65532, 0, 1, 65533, 0, 1, 65534, 0, 1, 65535, 1, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 2, 65532, 0, 2, 65533, 0, 2, 65534, 0, 2, 65535, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0)
 }
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="WalkMode" parent="." node_paths=PackedStringArray("gridmap") instance=ExtResource("4_nusaj")]
 gridmap = NodePath("../GridMap")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="WalkMode/RightHand" index="3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0203776, 0.117319, 0.0806859)
+remote_path = NodePath("../../../Viewport2Din3D")
 
 [node name="XRSimulator" parent="WalkMode" instance=ExtResource("5_yqfqf")]
 
 [node name="RigidBody3D" parent="." instance=ExtResource("5_3q871")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.07332, 1.57538, 0)
 freeze = true
+
+[node name="Viewport2Din3D" parent="." instance=ExtResource("7_sr21v")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.520378, 1.11732, 0.0806859)
+screen_size = Vector2(0.3, 0.2)
+viewport_size = Vector2(650, 400)
+scene_properties_keys = PackedStringArray()
+
+[node name="Viewport" parent="Viewport2Din3D" index="0"]
+size = Vector2i(650, 400)
+
+[node name="NetworkGateway" parent="Viewport2Din3D/Viewport" index="0" instance=ExtResource("8_pbqf7")]
+playersnodepath = NodePath("../../../Players")
+localplayerscene = "res://avatars/tunnelvrplayeravatar/VRPlayerAvatar.tscn"
+
+[node name="roomname" parent="Viewport2Din3D/Viewport/NetworkGateway/VBox/TabContainer/MQTTsignalling/VBox/HBoxM/HSplitContainer/Msettings/HBox" index="1"]
+text = "mushrooms"
+
+[node name="MQTT" parent="Viewport2Din3D/Viewport/NetworkGateway/VBox/TabContainer/MQTTsignalling" index="1"]
+verbose_level = 2
+
+[node name="AudioStreamPlayerMicrophone" parent="Viewport2Din3D/Viewport/NetworkGateway/VBox/PlayerConnections/VBox/RecordingFeature" index="0"]
+bus = &"MicrophoneBus"
+
+[node name="Screen" parent="Viewport2Din3D" index="1"]
+mesh = SubResource("QuadMesh_wuba6")
+surface_material_override/0 = SubResource("StandardMaterial3D_6dy7m")
+
+[node name="StaticBody3D" parent="Viewport2Din3D" index="2"]
+screen_size = Vector2(0.3, 0.2)
+viewport_size = Vector2(650, 400)
+
+[node name="CollisionShape3D" parent="Viewport2Din3D/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_ncq34")
+
+[node name="Players" type="Node3D" parent="."]
+
+[node name="VRPlayerAvatar" parent="Players" instance=ExtResource("9_xvucv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03685, 1.1346)
+
+[editable path="WalkMode"]
+[editable path="Viewport2Din3D"]
+[editable path="Viewport2Din3D/Viewport/NetworkGateway"]
