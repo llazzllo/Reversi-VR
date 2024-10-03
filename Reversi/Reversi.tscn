@@ -44,13 +44,13 @@ size = Vector2(8, 8)
 resource_local_to_scene = true
 size = Vector2(0.3, 0.2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_e0vkd"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_3cnxv"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dy7m"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wlw55"]
 transparency = 1
 cull_mode = 2
-albedo_texture = SubResource("ViewportTexture_e0vkd")
+albedo_texture = SubResource("ViewportTexture_3cnxv")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ncq34"]
@@ -112,6 +112,9 @@ gridmap = NodePath("../GridMap")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0203776, 0.117319, 0.0806859)
 remote_path = NodePath("../../../Viewport2Din3D")
 
+[node name="PlayerBody" parent="WalkMode" index="3"]
+collision_mask = 1021
+
 [node name="XRSimulator" parent="WalkMode" instance=ExtResource("5_yqfqf")]
 
 [node name="RigidBody3D" parent="." instance=ExtResource("5_3q871")]
@@ -121,6 +124,7 @@ freeze = true
 [node name="Viewport2Din3D" parent="." instance=ExtResource("7_sr21v")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.520378, 1.11732, 0.0806859)
 screen_size = Vector2(0.3, 0.2)
+collision_layer = 5242880
 viewport_size = Vector2(650, 400)
 scene_properties_keys = PackedStringArray()
 
@@ -142,9 +146,10 @@ bus = &"MicrophoneBus"
 
 [node name="Screen" parent="Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_wuba6")
-surface_material_override/0 = SubResource("StandardMaterial3D_6dy7m")
+surface_material_override/0 = SubResource("StandardMaterial3D_wlw55")
 
 [node name="StaticBody3D" parent="Viewport2Din3D" index="2"]
+collision_layer = 5242880
 screen_size = Vector2(0.3, 0.2)
 viewport_size = Vector2(650, 400)
 
