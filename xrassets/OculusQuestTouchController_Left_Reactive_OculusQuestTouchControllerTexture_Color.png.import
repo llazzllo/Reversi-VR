@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ct6kgw28msc8l"
 path.s3tc="res://.godot/imported/OculusQuestTouchController_Left_Reactive_OculusQuestTouchControllerTexture_Color.png-c2beb6cc29e4eb82a5ced6c0131532e2.s3tc.ctex"
+path.etc2="res://.godot/imported/OculusQuestTouchController_Left_Reactive_OculusQuestTouchControllerTexture_Color.png-c2beb6cc29e4eb82a5ced6c0131532e2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://xrassets/OculusQuestTouchController_Left_Reactive_OculusQuestTouchControllerTexture_Color.png"
-dest_files=["res://.godot/imported/OculusQuestTouchController_Left_Reactive_OculusQuestTouchControllerTexture_Color.png-c2beb6cc29e4eb82a5ced6c0131532e2.s3tc.ctex"]
+dest_files=["res://.godot/imported/OculusQuestTouchController_Left_Reactive_OculusQuestTouchControllerTexture_Color.png-c2beb6cc29e4eb82a5ced6c0131532e2.s3tc.ctex", "res://.godot/imported/OculusQuestTouchController_Left_Reactive_OculusQuestTouchControllerTexture_Color.png-c2beb6cc29e4eb82a5ced6c0131532e2.etc2.ctex"]
 
 [params]
 

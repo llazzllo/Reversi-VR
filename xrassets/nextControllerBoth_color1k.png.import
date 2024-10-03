@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://3ki2ik6lpb1u"
 path.s3tc="res://.godot/imported/nextControllerBoth_color1k.png-a484b6583d2e759e5db2cc27df666930.s3tc.ctex"
+path.etc2="res://.godot/imported/nextControllerBoth_color1k.png-a484b6583d2e759e5db2cc27df666930.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://xrassets/nextControllerBoth_color1k.png"
-dest_files=["res://.godot/imported/nextControllerBoth_color1k.png-a484b6583d2e759e5db2cc27df666930.s3tc.ctex"]
+dest_files=["res://.godot/imported/nextControllerBoth_color1k.png-a484b6583d2e759e5db2cc27df666930.s3tc.ctex", "res://.godot/imported/nextControllerBoth_color1k.png-a484b6583d2e759e5db2cc27df666930.etc2.ctex"]
 
 [params]
 

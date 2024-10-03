@@ -44,13 +44,13 @@ size = Vector2(8, 8)
 resource_local_to_scene = true
 size = Vector2(0.3, 0.2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rnthv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_e0vkd"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5nr2y"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dy7m"]
 transparency = 1
 cull_mode = 2
-albedo_texture = SubResource("ViewportTexture_rnthv")
+albedo_texture = SubResource("ViewportTexture_e0vkd")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ncq34"]
@@ -131,6 +131,9 @@ size = Vector2i(650, 400)
 playersnodepath = NodePath("../../../Players")
 localplayerscene = "res://avatars/tunnelvrplayeravatar/VRPlayerAvatar.tscn"
 
+[node name="roomname" parent="Viewport2Din3D/Viewport/NetworkGateway/VBox/TabContainer/MQTTsignalling/VBox/HBoxM/HSplitContainer/Msettings/HBox" index="1"]
+text = "mushrooms"
+
 [node name="MQTT" parent="Viewport2Din3D/Viewport/NetworkGateway/VBox/TabContainer/MQTTsignalling" index="1"]
 verbose_level = 2
 
@@ -139,7 +142,7 @@ bus = &"MicrophoneBus"
 
 [node name="Screen" parent="Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_wuba6")
-surface_material_override/0 = SubResource("StandardMaterial3D_5nr2y")
+surface_material_override/0 = SubResource("StandardMaterial3D_6dy7m")
 
 [node name="StaticBody3D" parent="Viewport2Din3D" index="2"]
 screen_size = Vector2(0.3, 0.2)
