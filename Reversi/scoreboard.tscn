@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://8ankr464od1p"]
+
+[ext_resource type="Script" path="res://Reversi/scoreboard.gd" id="1_gup20"]
+[ext_resource type="FontFile" uid="uid://qb4bmt13y0c7" path="res://Reversi/Fonts/EHSMB.TTF" id="2_pkmk0"]
+[ext_resource type="FontFile" uid="uid://benal6n2c28c8" path="res://Reversi/Fonts/V5PRF___.TTF" id="3_ducgm"]
+[ext_resource type="FontFile" uid="uid://cubt80j7xaubw" path="res://Reversi/Fonts/chintzys.ttf" id="4_n64fr"]
+[ext_resource type="PackedScene" uid="uid://4uxmx8qinido" path="res://Reversi/piece.003/Piece.glb" id="4_xmcle"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mo4rg"]
+albedo_color = Color(0.462291, 0.462291, 0.462291, 1)
+
+[node name="Scoreboard" type="Node3D"]
+script = ExtResource("1_gup20")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(4, 1.5, 0.298)
+material = SubResource("StandardMaterial3D_mo4rg")
+
+[node name="WhiteScore" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2787, 0, 1.01313)
+modulate = Color(1, 0.415686, 0.439216, 0.541176)
+outline_modulate = Color(0.694118, 0.266667, 0.564706, 0.227451)
+text = "32"
+font = ExtResource("2_pkmk0")
+font_size = 128
+
+[node name="BlackScore" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1213, 0, 0.813135)
+modulate = Color(1, 0.415686, 0.439216, 0.541176)
+outline_modulate = Color(0.694118, 0.266667, 0.564706, 0.227451)
+text = "32"
+font = ExtResource("2_pkmk0")
+font_size = 128
+
+[node name="GameOverLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64366, 0)
+visible = false
+modulate = Color(0.105882, 0.882353, 1, 0.482353)
+outline_modulate = Color(0.2, 0.372549, 0.462745, 0.32549)
+text = "Game Over"
+font = ExtResource("3_ducgm")
+font_size = 128
+
+[node name="GameName" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64366, 0)
+modulate = Color(0.924528, 0.593546, 0.236549, 0.364706)
+outline_modulate = Color(0.507949, 0.284832, 0.098144, 0.32549)
+text = "Reversi VR"
+font = ExtResource("4_n64fr")
+font_size = 256
+
+[node name="DebugLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.44646, 0)
+modulate = Color(0.878431, 0, 0.356863, 0.631373)
+outline_modulate = Color(0.403922, 0.0588235, 0.121569, 0.411765)
+text = "Debugger"
+font = ExtResource("2_pkmk0")
+font_size = 75
+
+[node name="Piece" parent="." instance=ExtResource("4_xmcle")]
+transform = Transform3D(2.1, 0, 0, 0, -9.17939e-08, -2.1, 0, 2.1, -9.17939e-08, 1.2, 0, 0.1)
+
+[node name="Piece2" parent="." instance=ExtResource("4_xmcle")]
+transform = Transform3D(-2.1, -1.83588e-07, 8.02488e-15, 0, -9.17939e-08, -2.1, 1.83588e-07, -2.1, 9.17939e-08, -1.3, 0, 0.7)

@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://bbrev2xo7te8l" path="res://Reversi/White.glb" id="2_qr4ot"]
 [ext_resource type="PackedScene" uid="uid://bd8pwee3dh6ek" path="res://Reversi/Black.glb" id="3_t3uxi"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yndap"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g15es"]
 albedo_color = Color(0, 0.517647, 0.0235294, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_p5egp"]
-material = SubResource("StandardMaterial3D_yndap")
+material = SubResource("StandardMaterial3D_g15es")
 size = Vector3(0.75, 0.01, 0.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2wlve"]
@@ -17,6 +17,7 @@ size = Vector3(0.75, 0.01, 0.75)
 [node name="MeshLibrary" type="Node3D"]
 
 [node name="Space" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_p5egp")
 script = ExtResource("1_cn0fy")
 

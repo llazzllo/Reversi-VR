@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://0e47egnlhad7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2g0qp"]
+size = Vector3(1, 0.3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y716w"]
+transparency = 1
+disable_ambient_light = true
+albedo_color = Color(0, 0.792157, 0.788235, 0.305882)
+emission_enabled = true
+emission = Color(1.92523e-06, 0.670588, 0.583871, 1)
+disable_receive_shadows = true
+
+[node name="Highlight" type="Node3D" groups=["highlight"]]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+mesh = SubResource("BoxMesh_2g0qp")
+surface_material_override/0 = SubResource("StandardMaterial3D_y716w")
